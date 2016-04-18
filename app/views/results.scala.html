@@ -1,0 +1,25 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(q: String, results: List[Address])
+
+@*
+ * Call the the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Results") {
+
+	<p>@q</p>
+	<table>
+		<thead>
+			<tr><th>UPRN</th><th>Address</th><th>Score</th></tr>
+		</thead>
+		<tbody>
+			@for(result <- results) {
+			  <tr><td>@result.uprn</td><td>@result.fullAddress.mkString(" ")</td><td>@result.score</td></tr>
+			}
+		</tbody>
+	</table>
+}
